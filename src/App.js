@@ -1,53 +1,32 @@
-import React from 'react'
-import 'holderjs'
-import Container from 'react-bootstrap/Container'
-import Nav from 'react-bootstrap/Nav'
-import Navbar from 'react-bootstrap/Navbar'
-import Card from 'react-bootstrap/Card'
-import Col from 'react-bootstrap/Col'
-import Row from 'react-bootstrap/Row'
+import './App.css';
+import Description from './components/Description';
+import Name from './components/Name';
+import Price from './components/Price';
+import Image from './components/Image';
+import image from './images/boat.png'
+import { Alert, Card, Col } from 'react-bootstrap';
 
-function REACTJSCheckpoint () {
-  return (
-    <React.Fragment>
-      <div className='App'>
-        <Navbar bg="dark" data-bs-theme="dark">
-          <Container>
-            <Navbar.Brand href="#home">Navbar</Navbar.Brand>
-            <Nav className="me-auto">
-              <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link href="#feartures">Feartures</Nav.Link>
-              <Nav.Link href="#pricing">Pricing</Nav.Link>
-            </Nav>
-          </Container>
-        </Navbar>
-        <h1>Here is the heading</h1>
-        <Row xs={2} md={4} className="g-4">
-          {Array.from({ length: 8 }).map((_, idx) => (
-            <Col key={idx}>
-              <Card>
-                <Card.Img variant="top" src="holder.js/100px160" />
-                <Card.Body className="bg-secondary shadow-1-strong">
-                  <Card.Title>Card title</Card.Title>
-                  <Card.Text>
-                    This is a longer card with supporting text below as a natural
-                    lead-in to additional content. This content is a little bit
-                    longer.
-                  </Card.Text>
-                </Card.Body>
-              </Card>
-            </Col>
-          ))}
-        </Row>
-      </div>
-    </React.Fragment>
-  )
-}
+// Variables
+const style = {fontSize: '1.5rem', fontWeight: 600, width: '30rem', margin: '10px auto', padding: '5px 0 0 10px', boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px'}
+const firstName =  "Lamine" //prompt("Submit your first name: ")
 
 function App() {
   return (
-    <REACTJSCheckpoint />
+    <Col sm={4} style={{margin:'10px auto'}}>
+      <Card style={{ width: '30rem', boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px'}}>
+        <Image />
+        <Card.Body>
+          <Name />
+          <Price />
+          <Description />
+        </Card.Body>
+      </Card> 
+      <Alert variant='primary' style={style}>
+        {firstName ? <p>Hello, <em>{firstName}</em></p> : <p>Hello, <em>there!</em></p>}
+      </Alert> 
+      {firstName ? <img style={{borderRadius: 7, width: '30rem', boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px'}} src={image} alt='its a boat' /> : <></>}
+    </Col>
   )
 }
 
-export default App
+export default App;
